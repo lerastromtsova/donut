@@ -98,7 +98,10 @@ function ProfilePage() {
                         </Col>
                         <Col>
                             <p>Твоя персональная ссылка для доната: <br/>
-                                <a href={"https://donut-sbp-app.herokuapp.com/donate_to/"+nickname} className="alert-link">
+                                <a 
+                                    href={"https://donut-sbp-app.herokuapp.com/donate_to/"+nickname} 
+                                    className="alert-link"
+                                    target="_blank">
                                     https://donut-sbp-app.herokuapp.com/donate_to/{nickname}
                                 </a>.
                             <br/>Прикрепи её в комментариях под стримом и получай донаты через СБП!</p>
