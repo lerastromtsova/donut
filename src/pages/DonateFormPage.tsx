@@ -21,8 +21,8 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
             publicId: "000003333328006-33328006",
             'amount': amount,
             orderId: orderId,
-            successUrl: "https://dashboard.heroku.com/apps/donut-sbp-app/success",
-            failUrl: "https://dashboard.heroku.com/apps/donut-sbp-app"
+            successUrl: "https://donut-sbp-app.herokuapp.com/success",
+            failUrl: "https://donut-sbp-app.herokuapp.com"
         }
         const raifFormAddress =
             'https://test.ecom.raiffeisen.ru/pay?' +
