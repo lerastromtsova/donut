@@ -9,8 +9,8 @@ import "./App.css"
 function App() {
   return (
       <Switch>
-          <Route path='/donut/streamer' component={StreamerPage} />
-          <Route path='/donut/donate_to/:nickname' component={DonateToStreamerPage} />
+          <Route exact path='/donate_to/:nickname' component={DonateToStreamerPage} />
+          <Route component={StreamerPage} />
       </Switch>
   );
 }

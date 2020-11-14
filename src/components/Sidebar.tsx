@@ -13,20 +13,20 @@ function Sidebar() {
             <div className="p-4">
                 <h1><a href="/" className="logo">Donut</a></h1>
                 <ul className="list-unstyled components mb-5">
-                    <li className={location.pathname === "/donut/streamer/profile" ? "active" : ""}>
-                        <Link to="/donut/streamer/profile"><BiHomeAlt className="mr-3"/>Личный кабинет</Link>
+                    <li className={location.pathname === "/profile" ? "active" : ""}>
+                        <Link to="/profile"><BiHomeAlt className="mr-3"/>Личный кабинет</Link>
                     </li>
-                    <li className={location.pathname === "/donut/streamer/donate" ? "active" : ""}>
-                        <Link to="/donut/streamer/donate"><BiLink className="mr-3"/>Персональная ссылка</Link>
+                    <li className={location.pathname === "/donate" ? "active" : ""}>
+                        <Link to="/donate"><BiLink className="mr-3"/>Персональная ссылка</Link>
                     </li>
-                    <li className={location.pathname === "/donut/streamer/goals" ? "active" : ""}>
-                        <Link to="/donut/streamer/goals"><BiBullseye className="mr-3"/>Цели</Link>
+                    <li className={location.pathname === "/goals" ? "active" : ""}>
+                        <Link to="/goals"><BiBullseye className="mr-3"/>Цели</Link>
                     </li>
-                    <li className={location.pathname === "/donut/streamer/notifications" ? "active" : ""}>
-                        <Link to="/donut/streamer/notifications"><BiBell className="mr-3"/>Уведомления</Link>
+                    <li className={location.pathname === "/notifications" ? "active" : ""}>
+                        <Link to="/notifications"><BiBell className="mr-3"/>Уведомления</Link>
                     </li>
-                    <li className={location.pathname === "/donut/streamer/stats" ? "active" : ""}>
-                        <Link to="/donut/streamer/stats"><BiBarChartAlt2 className="mr-3"/>Статистика</Link>
+                    <li className={location.pathname === "/stats" ? "active" : ""}>
+                        <Link to="/stats"><BiBarChartAlt2 className="mr-3"/>Статистика</Link>
                     </li>
                 </ul>
 

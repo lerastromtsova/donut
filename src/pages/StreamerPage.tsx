@@ -14,11 +14,11 @@ function StreamerPage({match}: RouteComponentProps<TParams>) {
         <Sidebar/>
         <div className="main p-4 p-md-5 pt-5">
             <Switch>
-                <Route exact path={match.url +'/profile'} component={ProfilePage} />
-                <Route exact path={match.url +'/donate'} component={DonateLinkPage} />
-                <Route exact path={match.url +'/goals'} component={GoalsPage} />
-                <Route exact path={match.url +'/notifications'} component={NotificationsPage} />
-                <Route exact path={match.url +'/stats'} component={StatsPage} />
+                <Route exact path='/profile' component={ProfilePage} />
+                <Route exact path='/donate' component={DonateLinkPage} />
+                <Route exact path='/goals' component={GoalsPage} />
+                <Route exact path='/notifications' component={NotificationsPage} />
+                <Route exact path='/stats' component={StatsPage} />
             </Switch>
         </div>
     </div>)
