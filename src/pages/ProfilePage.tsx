@@ -1,7 +1,7 @@
 import React from "react";
 
 function ProfilePage() {
-    return (<div>Profile</div>)
+    return <h2 className="mb-4">Личный кабинет</h2>
 }
 
 export default ProfilePage

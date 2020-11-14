@@ -14,7 +14,7 @@ function App() {
   return (
       <div className="wrapper d-flex align-items-stretch">
           <Sidebar/>
-          <div className='main'>
+          <div className="main p-4 p-md-5 pt-5">
               <Switch>
                   <Route path='/profile' component={ProfilePage} />
                   <Route exact path='/donate' component={DonateLinkPage} />

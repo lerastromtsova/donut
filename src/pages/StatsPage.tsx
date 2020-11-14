@@ -1,7 +1,7 @@
 import React from "react";
 
 function StatsPage() {
-    return (<div>Stats</div>)
+    return <h2 className="mb-4">Статистика</h2>
 }
 
 export default StatsPage

@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotificationsPage() {
-    return (<div>Notifications</div>)
+    return <h2 className="mb-4">Уведомления</h2>
 }
 
 export default NotificationsPage
