@@ -9,6 +9,7 @@ import DonateLinkPage from "./pages/DonateLinkPage";
 import GoalsPage from "./pages/GoalsPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import StatsPage from "./pages/StatsPage";
+import DonateFormPage from "./pages/DonateFormPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                   <Route exact path='/goals' component={GoalsPage} />
                   <Route exact path='/notifications' component={NotificationsPage} />
                   <Route exact path='/stats' component={StatsPage} />
+                  <Route path='/donate_to' component={DonateFormPage} />
                   <Redirect to='/' />
               </Switch>
           </div>
