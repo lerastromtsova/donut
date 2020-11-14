@@ -97,10 +97,12 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 <small>Открой камеру и наведи её на QR-код.</small>
                 <Row className="align-items-center">
                     <Col>
-                        <img
-                            src={response?.qrUrl}
-                            alt="qr-code"
-                        />
+                        <a href={response?.payload}>
+                            <img
+                                src={response?.qrUrl}
+                                alt="qr-code"
+                            />
+                        </a>
                     </Col>
                     <Col>
                         <img
