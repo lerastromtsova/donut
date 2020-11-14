@@ -1,6 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import {Link, useLocation} from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 
 import {BiBarChartAlt2, BiBell, BiBullseye, BiHomeAlt, BiLink, BiPhone} from "react-icons/bi";
@@ -12,7 +11,8 @@ function Sidebar() {
         <Nav id="sidebar" className="active">
             <div className="p-4">
                 <h1><a href="/" className="logo">Donut</a></h1>
-                    {location.pathname !== "/donate_to" ?
+                    {location.pathname.includes("/donate_to") ?
+                        null :
                         (
                             <ul className="list-unstyled components mb-5"><li className={location.pathname === "/profile" ? "active" : ""}>
                             <Link to="/profile"><BiHomeAlt className="mr-3"/>Личный кабинет</Link>
@@ -29,8 +29,6 @@ function Sidebar() {
                         <li className={location.pathname === "/stats" ? "active" : ""}>
                         <Link to="/stats"><BiBarChartAlt2 className="mr-3"/>Статистика</Link>
                         </li> </ul>)
-                        :
-                        null
                     }
 
                 <div className="footer">
