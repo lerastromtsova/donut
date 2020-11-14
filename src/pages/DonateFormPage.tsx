@@ -2,8 +2,8 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import API from "../utils/api";
 import {RouteComponentProps} from "react-router-dom";
-import SBPLogo from '../sbp_logo_t.png' ;
-import RaifLogo from '../Raiffeisen_Bank.png' ;
+import SBPLogo from '../sbp_logo_t.png';
+import RaifLogo from '../Raiffeisen_Bank.png';
 
 export interface IResponse {
     code: string;
@@ -16,9 +16,25 @@ type TParams = { nickname: string };
 
 function DonateFormPage({match}: RouteComponentProps<TParams>) {
 
+    const redirectToRaifForm = () => {
+        const params = {
+            publicId: "000003333328006-33328006",
+            'amount': amount,
+            orderId: orderId,
+            successUrl: "https://dashboard.heroku.com/apps/donut-sbp-app/success",
+            failUrl: "https://dashboard.heroku.com/apps/donut-sbp-app"
+        }
+        const raifFormAddress =
+            'https://test.ecom.raiffeisen.ru/pay?' +
+            // @ts-ignore
+            Object.keys(params).map(key => key + '=' + params[key]).join('&');
+        console.log(raifFormAddress);
+        window.location.href = raifFormAddress;
+    }
+
     const [response, setResponse] = useState<IResponse | undefined>(undefined);
     const currentDate = new Date;
-    const orderId = Math.random().toString();
+    const orderId = Math.ceil((Math.random()* 10000)).toString();
     const streamerNickname = match.params.nickname;
 
     const [amount, setAmount] = useState<number>(10);
@@ -100,7 +116,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                     </Col>
                 </Row>
                 <h6 className=" text-center m-4">или</h6>
-                <Button className="w-100" onClick={() => openPaymentForm(amount, details)}>Оплати по данным карты 💳</Button>
+                <Button className="w-100" onClick={redirectToRaifForm}>Оплати по данным карты 💳</Button>
             </Form>
         </div>)
 }

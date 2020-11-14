@@ -10,6 +10,7 @@ import GoalsPage from "./pages/GoalsPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import StatsPage from "./pages/StatsPage";
 import DonateFormPage from "./pages/DonateFormPage";
+import SuccessPage from "./pages/SuccessPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                   <Route exact path='/notifications' component={NotificationsPage} />
                   <Route exact path='/stats' component={StatsPage} />
                   <Route path='/donate_to/:nickname' component={DonateFormPage} />
+                  <Route path='/success' component={SuccessPage} />
               </Switch>
           </div>
       </div>
