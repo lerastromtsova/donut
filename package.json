@@ -2,7 +2,7 @@
   "name": "donut",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://lerastromtsova.github.io/donut",
+  "homepage": "https://rocky-cliffs-67365.herokuapp.com/donut",
   "dependencies": {
     "3": "^2.1.0",
     "-": "^0.0.1",
