@@ -35,6 +35,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
     const [response, setResponse] = useState<IResponse | undefined>(undefined);
     const [amount, setAmount] = useState<number | undefined>(undefined);
     const [details, setDetails] = useState<string>("");
+    const [donaterNickname, setDonaterNickname] = useState<string>("");
 
     const currentDate = new Date();
     const orderId = Math.ceil((Math.random()* 10000)).toString();
@@ -79,7 +80,10 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                         Представься
                     </Form.Label>
                     <Col>
-                        <Form.Control value="" placeholder="Твой никнейм"/>
+                        <Form.Control
+                            value={donaterNickname}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setDonaterNickname(e.target.value)}}
+                            placeholder="Твой никнейм"/>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -100,11 +104,12 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                     <Col>
                         <Form.Control
                             value={details}
+                            placeholder="Скажи всё, что думаешь!"
                             onChange={(e: ChangeEvent<HTMLInputElement>) => {setDetails(e.target.value)}}
                         />
                     </Col>
                 </Form.Group>
-                <small>Открой камеру и наведи её на QR-код.</small>
+                <small>Открой камеру и наведи её на QR-код.<br/>Или просто тапни его, если сидишь с телефона.</small>
                 <Row className="align-items-center">
                     <Col>
                         <a href={response?.payload}>
