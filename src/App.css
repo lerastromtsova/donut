@@ -1,9 +1,6 @@
-.header {
-    height: 50px;
-}
 .sidebar {
-    min-height: calc(100vh - 50px);
+    min-height: 100vh;
 }
 .main {
-    min-height: calc(100vh - 50px);
+    min-height: 100vh;
 }
