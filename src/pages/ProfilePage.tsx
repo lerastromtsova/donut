@@ -42,7 +42,7 @@ function ProfilePage() {
             account: account
         }
         API
-            .post(`/donate/${realNickname}`, newUser)
+            .get(`/change/${realNickname}`, { params: newUser })
             .then(response => {
                 setRealNickname(nickname);
             })
