@@ -89,7 +89,7 @@ function ProfilePage() {
 
 
                 <button className="btn btn-primary" onClick={changeProfile}>Сохранить изменения</button>
-                <Alert variant="info" className="m-3">
+                <Alert variant="info" className="mt-3 mb-3">
                     <Row className="align-items-center">
                         <Col lg={2}>
                             <BiLink size={40}/>
