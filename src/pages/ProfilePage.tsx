@@ -69,6 +69,8 @@ function ProfilePage() {
                     <Col>
                         <Form.Control
                             value={amount}
+                            type="number"
+                            step="0.01"
                             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                 setAmount(parseFloat(e.target.value))
                             }}
@@ -77,7 +79,7 @@ function ProfilePage() {
                 </Form.Group>
                 <Form.Group as={Row}>
                     <Form.Label column>
-                        Номер аккаунта
+                        Номер счёта в банке
                     </Form.Label>
                     <Col>
                         <Form.Control

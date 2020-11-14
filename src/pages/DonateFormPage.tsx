@@ -4,6 +4,7 @@ import API from "../utils/api";
 import {RouteComponentProps} from "react-router-dom";
 import SBPLogo from '../sbp_logo_t.png';
 import RaifLogo from '../Raiffeisen_Bank.png';
+import {IUser} from "./ProfilePage";
 
 export interface IResponse {
     code: string;
@@ -28,17 +29,26 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
             'https://test.ecom.raiffeisen.ru/pay?' +
             // @ts-ignore
             Object.keys(params).map(key => key + '=' + params[key]).join('&');
-        console.log(raifFormAddress);
         window.location.href = raifFormAddress;
     }
 
     const [response, setResponse] = useState<IResponse | undefined>(undefined);
-    const currentDate = new Date;
+    const [amount, setAmount] = useState<number | undefined>(undefined);
+    const [details, setDetails] = useState<string>("");
+
+    const currentDate = new Date();
     const orderId = Math.ceil((Math.random()* 10000)).toString();
     const streamerNickname = match.params.nickname;
 
-    const [amount, setAmount] = useState<number>(10);
-    const [details, setDetails] = useState<string>("");
+    useEffect(() => {
+        API
+            .get<IUser>("/donate/ivan55off")
+            .then(response => {
+                const {data} = response;
+                setAmount(data.min_donation);
+            })
+            .catch(ex => {console.log(ex)});
+    }, []);
 
     useEffect(() => {
         API
@@ -69,7 +79,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                         Представься
                     </Form.Label>
                     <Col>
-                        <Form.Control value="" placeholder="Ник"/>
+                        <Form.Control value="" placeholder="Твой никнейм"/>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -78,8 +88,8 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                     </Form.Label>
                     <Col>
                         <Form.Control
-                            value={amount}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseFloat(e.target.value))}}
+                            value={amount?.toString()}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseInt(e.target.value))}}
                         />
                     </Col>
                 </Form.Group>

@@ -2,7 +2,7 @@ import React from "react";
 import {Link, useLocation} from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 
-import {BiBarChartAlt2, BiBell, BiBullseye, BiHomeAlt, BiLink, BiPhone} from "react-icons/bi";
+import {BiBarChartAlt2, BiBell, BiBullseye, BiHomeAlt, BiPhone} from "react-icons/bi";
 
 function Sidebar() {
     const location = useLocation();
