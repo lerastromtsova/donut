@@ -24,9 +24,9 @@ function ProfilePage() {
     console.log(user);
 
     return (<div>
-        <h2 className="mb-4">Личный кабинет</h2>
-        {user ? (user.nickname) : "Кажется, я вас не знаю"}
-    </div>)
+                <h2 className="mb-4">Личный кабинет</h2>
+                {user ? (user.nickname) : "Кажется, я вас не знаю"}
+            </div>)
 }
 
 export default ProfilePage
