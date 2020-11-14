@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import API from "../utils/api";
-import {randomInt} from "crypto";
+import {RouteComponentProps} from "react-router-dom";
+import SBPLogo from '../sbp_logo_t.png' ;
+import RaifLogo from '../Raiffeisen_Bank.png' ;
 
 export interface IResponse {
     code: string;
@@ -10,47 +12,38 @@ export interface IResponse {
     qrUrl: string;
 }
 
-export interface ISBPPaymentData {
-    amount: number,
-    createDate: Date,
-    currency: string,
-    order: string,
-    paymentDetails: string,
-    qrType: string,
-    sbpMerchantId: string
-}
+type TParams = { nickname: string };
 
-
-function DonateFormPage() {
+function DonateFormPage({match}: RouteComponentProps<TParams>) {
 
     const [response, setResponse] = useState<IResponse | undefined>(undefined);
     const currentDate = new Date;
     const orderId = Math.random().toString();
+    const streamerNickname = match.params.nickname;
 
-    const [SBPPaymentData, setSBPPaymentData ] = useState<ISBPPaymentData | undefined>(
-        {
-            amount: 10,
-            createDate: currentDate,
-            currency: "RUB",
-            order: orderId,
-            paymentDetails: "test",
-            qrType: "QRDynamic",
-            sbpMerchantId: "MA603374"
-        }
-    );
+    const [amount, setAmount] = useState<number>(10);
+    const [details, setDetails] = useState<string>("");
 
     useEffect(() => {
         API
             .post<IResponse>(
                 "https://test.ecom.raiffeisen.ru/api/sbp/v1/qr/register",
-                SBPPaymentData
+                {
+                    'amount': amount,
+                    createDate: currentDate,
+                    currency: "RUB",
+                    order: orderId,
+                    paymentDetails: details,
+                    qrType: "QRDynamic",
+                    sbpMerchantId: "MA603374"
+                }
             )
             .then(response => {
                 const {data} = response;
                 setResponse(data);
             })
             .catch(ex => {console.log(ex)});
-    }, []);
+    }, [amount, details]);
 
     return (<div>
             <h3>Оплатить через СБП</h3>
@@ -61,7 +54,7 @@ function DonateFormPage() {
                         Никнейм стримера
                     </Form.Label>
                     <Col>
-                        <Form.Control plaintext readOnly defaultValue="тест" />
+                        <Form.Control plaintext readOnly defaultValue={streamerNickname} />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -69,7 +62,10 @@ function DonateFormPage() {
                         Сумма доната
                     </Form.Label>
                     <Col>
-                        <Form.Control placeholder="10" />
+                        <Form.Control
+                            value={amount}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseFloat(e.target.value))}}
+                        />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -77,14 +73,32 @@ function DonateFormPage() {
                         Сообщение
                     </Form.Label>
                     <Col>
-                        <Form.Control placeholder="10" />
+                        <Form.Control
+                            value={details}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setDetails(e.target.value)}}
+                        />
                     </Col>
                 </Form.Group>
-                <Button className="w-100">Сгенерировать QR</Button>
-                <img
-                    src={response?.qrUrl}
-                    alt="new"
-                />
+                <Row>
+                    <Col>
+                        <img
+                            src={response?.qrUrl}
+                            alt="qr-code"
+                        />
+                    </Col>
+                    <Col>
+                        <img
+                            src={SBPLogo}
+                            alt="SBP"
+                            height={60}
+                        />
+                        <img
+                            src={RaifLogo}
+                            alt="SBP"
+                            height={50}
+                        />
+                    </Col>
+                </Row>
             </Form>
             <h3>Оплатить через e-commerce</h3>
             <Form className="border p-4">

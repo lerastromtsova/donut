@@ -7,9 +7,7 @@ import GoalsPage from "./GoalsPage";
 import NotificationsPage from "./NotificationsPage";
 import StatsPage from "./StatsPage";
 
-type TParams = { id: string };
-
-function StreamerPage({match}: RouteComponentProps<TParams>) {
+function StreamerPage() {
     return (<div className="wrapper d-flex align-items-stretch">
         <Sidebar/>
         <div className="main p-4 p-md-5 pt-5">
