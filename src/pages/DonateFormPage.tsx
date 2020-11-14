@@ -121,24 +121,5 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
         </div>)
 }
 
-function openPaymentForm(amount:number, orderId:string) {
-    API
-        .get<IResponse>(
-            "https://test.ecom.raiffeisen.ru/pay",
-            {
-                params: {
-                    publicId: "000003333328006-33328006",
-                    'amount': amount,
-                    orderId: orderId,
-                    successUrl: "https://dashboard.heroku.com/apps/donut-sbp-app",
-                    failUrl: "https://dashboard.heroku.com/apps/donut-sbp-app"
-                }
-            }
-        )
-        .then(response => {
-            console.log(response);
-        })
-        .catch(ex => {console.log(ex)});
-}
 
 export default DonateFormPage

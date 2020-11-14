@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {Alert, Col, Form, Row} from "react-bootstrap";
-import FormImpl from "react-bootstrap/esm/Form";
 import API from "../utils/api";
 import {BiLink} from "react-icons/bi";
 
@@ -12,7 +11,6 @@ export interface IUser {
 }
 
 function ProfilePage() {
-    const [user, setUser] = useState<IUser | undefined>(undefined);
 
     const [id, setId] = useState<number>(0);
     const [realNickname, setRealNickname] = useState<string>("");
@@ -66,12 +64,14 @@ function ProfilePage() {
                 </Form.Group>
                 <Form.Group as={Row}>
                     <Form.Label column>
-                        Минимальная сумма доанта
+                        Минимальная сумма доната
                     </Form.Label>
                     <Col>
                         <Form.Control
                             value={amount}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseFloat(e.target.value))}}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setAmount(parseFloat(e.target.value))
+                            }}
                         />
                     </Col>
                 </Form.Group>
