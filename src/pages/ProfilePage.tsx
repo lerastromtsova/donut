@@ -28,8 +28,6 @@ function ProfilePage() {
                 setAccount(data.account);
                 setRealNickname(data.nickname)
                 setId(data.id);
-                // setUser(data);
-                console.log(data);
             })
             .catch(ex => {console.log(ex)});
     }, []);
