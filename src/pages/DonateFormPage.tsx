@@ -46,15 +46,14 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
     }, [amount, details]);
 
     return (<div>
-            <h3>Оплатить через СБП</h3>
-            <small>Откройте камеру и наведите ее на QR-код.</small>
+            <h3>Задонатить {streamerNickname} 🤗</h3>
             <Form className="border p-4">
                 <Form.Group as={Row}>
                     <Form.Label column>
-                        Никнейм стримера
+                        Представься
                     </Form.Label>
                     <Col>
-                        <Form.Control plaintext readOnly defaultValue={streamerNickname} />
+                        <Form.Control value="" placeholder="Ник"/>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -79,7 +78,8 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                         />
                     </Col>
                 </Form.Group>
-                <Row>
+                <small>Открой камеру и наведи её на QR-код.</small>
+                <Row className="align-items-center">
                     <Col>
                         <img
                             src={response?.qrUrl}
@@ -99,50 +99,8 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                         />
                     </Col>
                 </Row>
-            </Form>
-            <h3>Оплатить через e-commerce</h3>
-            <Form className="border p-4">
-                <Form.Group as={Row}>
-                    <Form.Label column>
-                        Никнейм стримера
-                    </Form.Label>
-                    <Col>
-                        <Form.Control plaintext readOnly defaultValue="тест" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column>
-                        Номер карты
-                    </Form.Label>
-                    <Col>
-                        <Form.Control placeholder="0000 0000 0000 0000" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column>
-                        Месяц/Год
-                    </Form.Label>
-                    <Col>
-                        <Form.Control placeholder="MM/YY" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column>
-                        CVV2
-                    </Form.Label>
-                    <Col>
-                        <Form.Control placeholder="000" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column>
-                        Сумма доната
-                    </Form.Label>
-                    <Col>
-                        <Form.Control placeholder="10" />
-                    </Col>
-                </Form.Group>
-                <Button className="w-100">Оплатить</Button>
+                <h6 className=" text-center m-4">или</h6>
+                <Button className="w-100">Оплати по данным карты 💳</Button>
             </Form>
         </div>)
 }
