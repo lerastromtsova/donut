@@ -1,7 +1,8 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import {Alert, Col, Form, Row} from "react-bootstrap";
 import FormImpl from "react-bootstrap/esm/Form";
 import API from "../utils/api";
+import {BiLink} from "react-icons/bi";
 
 export interface IUser {
     id: number;
@@ -86,8 +87,22 @@ function ProfilePage() {
                     </Col>
                 </Form.Group>
 
-                
+
                 <button className="btn btn-primary" onClick={changeProfile}>Сохранить изменения</button>
+                <Alert variant="info" className="m-3">
+                    <Row className="align-items-center">
+                        <Col lg={2}>
+                            <BiLink size={40}/>
+                        </Col>
+                        <Col>
+                            <p>Твоя персональная ссылка для доната: <br/>
+                                <a href={"https://donut-sbp-app.herokuapp.com/donate_to/"+nickname} className="alert-link">
+                                    https://donut-sbp-app.herokuapp.com/donate_to/{nickname}
+                                </a>.
+                            <br/>Прикрепи её в комментариях под стримом и получай донаты через СБП!</p>
+                        </Col>
+                    </Row>
+                </Alert>
             </div>)
 }
 
