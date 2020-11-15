@@ -142,8 +142,12 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                     </Form.Label>
                     <Col>
                         <Form.Control
-                            value={amount?.toString()}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseInt(e.target.value))}}
+                            value={amount}
+                            type="number"
+                            step="0.01"
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setAmount(parseFloat(e.target.value))
+                            }}
                         />
                     </Col>
                 </Form.Group>
