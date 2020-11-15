@@ -3,6 +3,11 @@
 $font-primary: 'Poppins',Arial, sans-serif;
 $primary: #232323;
 
+@font-face {
+	font-family: 'Comfortaa';
+	src: local('Comfortaa'), url(./fonts/Comfortaa-Bold.ttf) format('truetype');
+}
+
 body{
 	font-family: $font-primary;
 	font-size: 14px;
@@ -105,7 +110,8 @@ h1, h2, h3, h4, h5,
   	margin-bottom: 20px;
   	font-weight: 700;
   	.logo{
-  		color: $white;
+		  color: $white;
+		  font-family: 'Comfortaa';
   	}
   }
   ul.components{
