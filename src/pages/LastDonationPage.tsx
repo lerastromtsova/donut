@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import API from "../utils/api";
 import {RouteComponentProps} from "react-router-dom";
 
+import "./LastDonationPage.css";
+
 export interface IDonate {
     id: number,
     name: string,
@@ -17,6 +19,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
     const [donat, setDonat] = useState<IDonate|undefined>(undefined);
 
     useEffect(() => {
+        const interval = setInterval(() => {
         API
             .get<IDonate>("/lastdonat?token=O8re-gOg_Weqk0PFIurR_xQKkmg")
             .then(response => {
@@ -24,7 +27,9 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
                 setDonat(data);
                 console.log(data);
             })
-            .catch(ex => {console.log(ex)});
+            .catch(ex => {console.log(ex)});}
+        , 1000)
+            return () => clearInterval(interval)
     }, []);
 
 
@@ -41,8 +46,12 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
 
     return (
         <div>
-            <h2 className="mb-4">Уведомления</h2>
-            { donat?.amount? donateItem : "Нет уведомлений..."}
+            { donat?.amount?
+                <div>
+                <h2 className="mb-4">Уведомления</h2>
+                donateItem
+                </div>
+                :null}
         </div>
     )
 }
