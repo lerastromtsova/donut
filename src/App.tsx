@@ -25,7 +25,7 @@ function App() {
                   <Route exact path='/notifications' component={NotificationsPage} />
                   <Route exact path='/stats' component={StatsPage} />
                   <Route path='/donate_to/:nickname' component={DonateFormPage} />
-                  <Route exact path='/success' component={SuccessPage} />
+                  <Route path='/success' component={SuccessPage} />
                   <Route path='/lastdonation/:token' component={LastDonationPage} />
               </Switch>
           </div>
