@@ -18,24 +18,25 @@ function useQuery() {
 function SuccessPage() {
 
     const query = useQuery();
-    console.log('here')
 
     useEffect(() => {
-        const data = {
-            streamer_id: query.get("streamer_id"),
-            name: query.get("name"),
-            text: query.get("text"),
-            amount: query.get("amount")
+        if (query.get("amount")) {
+            const data = {
+                streamer_id: query.get("streamer_id"),
+                name: query.get("name"),
+                text: query.get("text"),
+                amount: query.get("amount")
+            }
+            API
+                .post<IResponse>(
+                    "/donation",
+                    data
+                )
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(ex => {console.log(ex)});
         }
-        API
-            .post<IResponse>(
-                "/donation",
-                data
-            )
-            .then(response => {
-                console.log(response);
-            })
-            .catch(ex => {console.log(ex)});
     }, [])
 
     return (

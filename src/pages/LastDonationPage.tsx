@@ -35,7 +35,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
 
     const donateItem =
         <div className="mt-2">
-            <img alt="cat" src="https://i.gifer.com/18Pe.gif"/>
+            <img alt="cat" src="https://i.gifer.com/18Pe.gif" width={100}/>
             <p className="donat-title">
                 <span className="donat-name">{donat?.name}</span> задонатил <span className="donat-amount">{donat?.amount} руб.</span>
             </p>

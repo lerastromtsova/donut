@@ -101,8 +101,14 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 .then(r => {
                     console.log(r);
                     if (r.data.paymentStatus==="SUCCESS") {
-                        createDonut()
-                        window.location.href = "https://donut-sbp-app.herokuapp.com/success"
+                        const data = {
+                            streamer_id: userId,
+                            name: donaterNickname,
+                            text: details,
+                            amount: amount
+                        }
+                        // @ts-ignore
+                        window.location.href = "https://donut-sbp-app.herokuapp.com/success?" + Object.keys(data).map(key => key + '=' + data[key]).join('&');
                         clearInterval(interval)
                     }
                 })
@@ -110,25 +116,6 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
         }, 5000)
         return () => clearInterval(interval)
     }, [response]);
-
-    function createDonut() {
-        const data = {
-            streamer_id: userId,
-            name: donaterNickname,
-            text: details,
-            amount: amount
-        }
-        API
-            .post<IResponse>(
-                "/donation",
-                data
-            )
-            .then(response => {
-                console.log(response);
-            })
-            .catch(ex => {console.log(ex)});
-    }
-
 
     return (<div>
             <h3>Задонатить {streamerNickname} 🤗</h3>
