@@ -75,38 +75,27 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (response?.qrId !== prevQrId && response?.qrId) {
-                setPrevQrId(response?.qrId);
-                console.log("different");
-                console.log(response.qrId);
-                console.log(prevQrId);
-                API
-                    .get<IResponse>(
-                        "https://e-commerce.raiffeisen.ru/api/sbp/v1/qr/"
-                            +response?.qrId
-                            +"/payment-info",
-                        {
-                            headers:
-                                {
-                                    Authorization:
-                                        ":Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTYwMzM3NCIsImp0aSI6ImJhNGYyMDFhLWFiN2UtNDJkMS05MGUzLTBhNzFhMzU4YjZkMiJ9.5iv6IDeVXQI7O1_5gWxz0N0jWY-oeCekxi4AJviB-7I"
-                                }
-                        }
-                    )
-                    .then(r => {
-                        console.log(r);
-                        if (r.data.qrId) {
-                            console.log(r);
-                            setPrevQrId(r.data.qrId);
-                        }
-                    })
-                    .catch(ex => {console.log(ex)})
-            }
-            else {
-                console.log("same");
-                console.log(response?.qrId);
-            }
-        }, 1000)
+            API
+                .get<IResponse>(
+                    "https://test.ecom.raiffeisen.ru/api/sbp/v1/qr/"
+                        +response?.qrId
+                        +"/info",
+                    {
+                        headers:
+                            {
+                                Authorization:
+                                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTYwMzM3NCIsImp0aSI6ImJhNGYyMDFhLWFiN2UtNDJkMS05MGUzLTBhNzFhMzU4YjZkMiJ9.5iv6IDeVXQI7O1_5gWxz0N0jWY-oeCekxi4AJviB-7I"
+                            }
+                    }
+                )
+                .then(r => {
+                    console.log(r);
+                    if (r.data.code==="SUCCESS") {
+                        // window.location.href = "https://donut-sbp-app.herokuapp.com/success"
+                    }
+                })
+                .catch(ex => {console.log(ex)})
+        }, 5000)
         return () => clearInterval(interval)
     }, [response]);
 
