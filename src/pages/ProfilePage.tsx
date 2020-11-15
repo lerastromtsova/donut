@@ -101,7 +101,7 @@ function ProfilePage() {
                                     className="alert-link"
                                     target="_blank">
                                     https://donut-sbp-app.herokuapp.com/donate_to/{nickname}
-                                </a>.
+                                </a>
                             <br/>Прикрепи её в комментариях под стримом и получай донаты через СБП!</p>
                         </Col>
                     </Row>

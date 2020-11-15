@@ -25,7 +25,7 @@ function StatsPage() {
     }, []);
 
 
-    const donateItems = donates.map((donate, index) => 
+    const donateItems = donates.map((donate, index) =>
         <div className="card mt-2">
             <div className="card-body">
                 <h5 className="card-title">{donate.name}</h5>
@@ -42,24 +42,6 @@ function StatsPage() {
             <h2 className="mb-4">Статистика</h2>
             <h2 className="mb-4">Донаты</h2>
             { donateItems }
-            <div className="card mt-2">
-                <div className="card-body">
-                    <h5 className="card-title">Dr.Petter</h5>
-                    <p className="card-text">100 рублей</p>
-                    <p className="card-text donate-text">
-                        Сообщение стримеру большое такое прям огрмоное
-                    </p>
-                </div>
-            </div>
-            <div className="card mt-2">
-                <div className="card-body">
-                    <h5 className="card-title">Dr.Flutter</h5>
-                    <p className="card-text">250 рублей</p>
-                    <p className="card-text donate-text">
-                        Больше чем 3
-                    </p>
-                </div>
-            </div>
         </div>
     )
 }

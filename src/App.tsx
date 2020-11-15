@@ -11,6 +11,7 @@ import NotificationsPage from "./pages/NotificationsPage";
 import StatsPage from "./pages/StatsPage";
 import DonateFormPage from "./pages/DonateFormPage";
 import SuccessPage from "./pages/SuccessPage";
+import LastDonationPage from "./pages/LastDonationPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                   <Route exact path='/stats' component={StatsPage} />
                   <Route path='/donate_to/:nickname' component={DonateFormPage} />
                   <Route exact path='/success' component={SuccessPage} />
+                  <Route path='/lastdonation/:token' component={LastDonationPage} />
               </Switch>
           </div>
       </div>
