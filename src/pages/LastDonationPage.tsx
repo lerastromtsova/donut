@@ -49,7 +49,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
             { donat?.amount?
                 <div>
                 <h2 className="mb-4">Уведомления</h2>
-                donateItem
+                    {donateItem}
                 </div>
                 :null}
         </div>
