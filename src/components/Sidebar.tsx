@@ -23,7 +23,7 @@ function Sidebar() {
                         <Link to="/notifications"><BiBell className="mr-3"/>Уведомления</Link>
                         </li>
                         <li className={location.pathname === "/stats" ? "active" : ""}>
-                        <Link to="/stats"><BiBarChartAlt2 className="mr-3"/>Статистика</Link>
+                        <Link to="/stats"><BiBarChartAlt2 className="mr-3"/>Донаты</Link>
                         </li> </ul>)
                     }
 

@@ -30,11 +30,14 @@ function StatsPage() {
         <div className="card mt-2">
             <div className="card-body">
                 <h5 className="card-title">{donate.name}</h5>
-                <p className="card-text">{donate.amount} рублей</p>
-                <p className="card-text">
-                    {donate.create_date.split('T')[0]}<br/>
-                    {donate.create_date.split('T')[1].slice(0,8)}
-                </p>
+                <p className="card-text">{donate.amount} руб. · 
+                    {
+                        new Date(donate.create_date).getHours() + ":" + 
+                        `0${new Date(donate.create_date).getMinutes()}`.slice(-2) + " " +
+                        new Date(donate.create_date).getDate() + "." +
+                        new Date(donate.create_date).getMonth() + "." +
+                        new Date(donate.create_date).getFullYear()
+                    }</p>
                 <p className="card-text donate-text">
                     {donate.text}
                 </p>
@@ -43,15 +46,10 @@ function StatsPage() {
     );
 
     return (
-        <>
-            <h2 className="mb-4">Статистика</h2>
-            <h5 className="mb-4">Донаты</h5>
-            <Row className="w-100">
-                <Col>
-                    { donateItems }
-                </Col>
-            </Row>
-        </>
+        <div>
+            <h2 className="mb-4">Донаты</h2>
+            { donateItems }
+        </div>
     )
 }
 
