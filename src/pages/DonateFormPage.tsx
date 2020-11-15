@@ -11,6 +11,7 @@ export interface IResponse {
     qrId: string;
     payload: string;
     qrUrl: string;
+    paymentStatus: string;
 }
 
 type TParams = { nickname: string };
@@ -39,7 +40,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
     const [userId, setUserId] = useState<string>("");
 
     const currentDate = new Date();
-    const orderId = Math.ceil((Math.random()* 10000)).toString();
+    const orderId = "KAIFGANG"+Math.ceil((Math.random()* 10000)).toString();
     const streamerNickname = match.params.nickname;
 
     useEffect(() => {
@@ -80,7 +81,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 .get<IResponse>(
                     "https://test.ecom.raiffeisen.ru/api/sbp/v1/qr/"
                         +response?.qrId
-                        +"/info",
+                        +"/payment-info",
                     {
                         headers:
                             {
@@ -91,7 +92,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 )
                 .then(r => {
                     console.log(r);
-                    if (r.data.code==="SUCCESS") {
+                    if (r.data.paymentStatus==="SUCCESS") {
                         createDonut()
                         window.location.href = "https://donut-sbp-app.herokuapp.com/success"
                         clearInterval(interval)
@@ -141,8 +142,12 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                     </Form.Label>
                     <Col>
                         <Form.Control
-                            value={amount?.toString()}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {setAmount(parseInt(e.target.value))}}
+                            value={amount}
+                            type="number"
+                            step="0.01"
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setAmount(parseFloat(e.target.value))
+                            }}
                         />
                     </Col>
                 </Form.Group>
