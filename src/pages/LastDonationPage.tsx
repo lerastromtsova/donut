@@ -28,7 +28,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
                 console.log(data);
             })
             .catch(ex => {console.log(ex)});}
-        , 1000)
+        , 10000)
             return () => clearInterval(interval)
     }, []);
 
