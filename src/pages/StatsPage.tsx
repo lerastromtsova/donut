@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import API from "../utils/api";
+import {Col, Row} from "react-bootstrap";
 
 export interface IDonate {
     id: number,

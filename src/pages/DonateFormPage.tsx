@@ -19,17 +19,25 @@ type TParams = { nickname: string };
 function DonateFormPage({match}: RouteComponentProps<TParams>) {
 
     const redirectToRaifForm = () => {
+        const data = {
+            streamer_id: userId,
+            name: donaterNickname,
+            text: details,
+            amount: amount
+        }
         const params = {
             publicId: "000003333328006-33328006",
             'amount': amount,
             orderId: orderId,
-            successUrl: "https://donut-sbp-app.herokuapp.com/success",
+            // @ts-ignore
+            successUrl: encodeURIComponent("https://donut-sbp-app.herokuapp.com/success?" + Object.keys(data).map(key => key + '=' + data[key]).join('&')),
             failUrl: "https://donut-sbp-app.herokuapp.com"
         }
         const raifFormAddress =
             'https://test.ecom.raiffeisen.ru/pay?' +
             // @ts-ignore
             Object.keys(params).map(key => key + '=' + params[key]).join('&');
+        console.log(raifFormAddress);
         window.location.href = raifFormAddress;
     }
 

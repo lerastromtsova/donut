@@ -21,7 +21,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
     useEffect(() => {
         const interval = setInterval(() => {
         API
-            .get<IDonate>("/lastdonat?token=O8re-gOg_Weqk0PFIurR_xQKkmg")
+            .get<IDonate>("/lastdonat?token=0mUpZbQU1lEXHNE4lQM-zWN8GN0")
             .then(response => {
                 const {data} = response;
                 setDonat(data);
