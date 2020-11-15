@@ -40,7 +40,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
     const [userId, setUserId] = useState<string>("");
 
     const currentDate = new Date();
-    const orderId = Math.ceil((Math.random()* 10000)).toString();
+    const orderId = "KAIFGANG"+Math.ceil((Math.random()* 10000)).toString();
     const streamerNickname = match.params.nickname;
 
     useEffect(() => {
