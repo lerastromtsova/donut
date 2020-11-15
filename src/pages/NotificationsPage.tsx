@@ -12,7 +12,7 @@ function NotificationsPage() {
                         <BiLink size={40}/>
                     </Col>
                     <Col>
-                        <p>Скопируй ссылку на виджет уведомленийу<br/>
+                        <p>Скопируй ссылку на виджет уведомлений<br/>
                             <a
                                 href={"https://donut-sbp-app.herokuapp.com/lastdonation/ivan55off"}
                                 className="alert-link"

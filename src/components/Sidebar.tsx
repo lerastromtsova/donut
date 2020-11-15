@@ -11,7 +11,7 @@ function Sidebar() {
         <Nav id="sidebar" className="active">
             <div className="p-4">
                 <h1><a href="/" className="logo">Donut</a></h1>
-                    {location.pathname.includes("/donate_to") || location.pathname.includes("/success")?
+                    {location.pathname.includes("/donate_to") || location.pathname.includes("/success") || location.pathname.includes("/lastdonation")?
                         null :
                         (
                             <ul className="list-unstyled components mb-5"><li className={location.pathname === "/profile" ? "active" : ""}>
