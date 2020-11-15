@@ -11,6 +11,7 @@ export interface IResponse {
     qrId: string;
     payload: string;
     qrUrl: string;
+    paymentStatus: string;
 }
 
 type TParams = { nickname: string };
@@ -80,7 +81,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 .get<IResponse>(
                     "https://test.ecom.raiffeisen.ru/api/sbp/v1/qr/"
                         +response?.qrId
-                        +"/info",
+                        +"/payment-info",
                     {
                         headers:
                             {
@@ -91,7 +92,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 )
                 .then(r => {
                     console.log(r);
-                    if (r.data.code==="SUCCESS") {
+                    if (r.data.paymentStatus==="SUCCESS") {
                         createDonut()
                         window.location.href = "https://donut-sbp-app.herokuapp.com/success"
                         clearInterval(interval)
