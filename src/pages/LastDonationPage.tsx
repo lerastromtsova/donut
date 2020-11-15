@@ -42,7 +42,7 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
     return (
         <div>
             <h2 className="mb-4">Уведомления</h2>
-            { donateItem }
+            { donat?.amount? donateItem : "Нет уведомлений..."}
         </div>
     )
 }
