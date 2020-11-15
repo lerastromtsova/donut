@@ -34,21 +34,20 @@ function LastDonationPage({match}: RouteComponentProps<TParams>) {
 
 
     const donateItem =
-        <div className="card mt-2">
-            <div className="card-body">
-                <h5 className="card-title">{donat?.name}</h5>
-                <p className="card-text">{donat?.amount} руб.</p>
-                <p className="card-text donate-text">
-                    {donat?.text}
-                </p>
-            </div>
+        <div className="mt-2">
+            <img alt="cat" src="https://i.gifer.com/18Pe.gif"/>
+            <p className="donat-title">
+                <span className="donat-name">{donat?.name}</span> задонатил <span className="donat-amount">{donat?.amount} руб.</span>
+            </p>
+            <p className="donate-msg">
+                {donat?.text}
+            </p>
         </div>;
 
     return (
         <div>
             { donat?.amount?
                 <div>
-                <h2 className="mb-4">Уведомления</h2>
                     {donateItem}
                 </div>
                 :null}
