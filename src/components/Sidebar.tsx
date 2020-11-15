@@ -12,15 +12,12 @@ function Sidebar() {
         { location.pathname.includes("/lastdonation") ? null :
         <Nav id="sidebar" className="active">
             <div className="p-4">
-                <h1><a href="/" className="logo">Donut</a></h1>
+                <h1><a href="/" className="logo">donut</a></h1>
                     {location.pathname.includes("/donate_to") || location.pathname.includes("/success") ?
                         null :
                         (
                             <ul className="list-unstyled components mb-5"><li className={location.pathname === "/profile" ? "active" : ""}>
                             <Link to="/profile"><BiHomeAlt className="mr-3"/>Личный кабинет</Link>
-                        </li>
-                        <li className={location.pathname === "/goals" ? "active" : ""}>
-                        <Link to="/goals"><BiBullseye className="mr-3"/>Цели</Link>
                         </li>
                         <li className={location.pathname === "/notifications" ? "active" : ""}>
                         <Link to="/notifications"><BiBell className="mr-3"/>Уведомления</Link>
