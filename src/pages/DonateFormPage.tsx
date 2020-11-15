@@ -34,9 +34,9 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
 
     const [response, setResponse] = useState<IResponse | undefined>(undefined);
     const [amount, setAmount] = useState<number | undefined>(undefined);
-    const [details, setDetails] = useState<string>("");
-    const [donaterNickname, setDonaterNickname] = useState<string>("");
-    const [prevQrId, setPrevQrId] = useState<string>("");
+    const [details, setDetails] = useState<string>("-");
+    const [donaterNickname, setDonaterNickname] = useState<string>("Аноним");
+    const [userId, setUserId] = useState<string>("");
 
     const currentDate = new Date();
     const orderId = Math.ceil((Math.random()* 10000)).toString();
@@ -48,6 +48,7 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
             .then(response => {
                 const {data} = response;
                 setAmount(data.min_donation);
+                setUserId(data.id);
             })
             .catch(ex => {console.log(ex)});
     }, []);
@@ -91,13 +92,33 @@ function DonateFormPage({match}: RouteComponentProps<TParams>) {
                 .then(r => {
                     console.log(r);
                     if (r.data.code==="SUCCESS") {
-                        // window.location.href = "https://donut-sbp-app.herokuapp.com/success"
+                        createDonut()
+                        window.location.href = "https://donut-sbp-app.herokuapp.com/success"
+                        clearInterval(interval)
                     }
                 })
                 .catch(ex => {console.log(ex)})
         }, 5000)
         return () => clearInterval(interval)
     }, [response]);
+
+    function createDonut() {
+        const data = {
+            streamer_id: userId,
+            name: donaterNickname,
+            text: details,
+            amount: amount
+        }
+        API
+            .post<IResponse>(
+                "/donation",
+                data
+            )
+            .then(response => {
+                console.log(response);
+            })
+            .catch(ex => {console.log(ex)});
+    }
 
 
     return (<div>

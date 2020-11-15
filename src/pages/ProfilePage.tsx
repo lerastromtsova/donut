@@ -4,7 +4,7 @@ import API from "../utils/api";
 import {BiLink} from "react-icons/bi";
 
 export interface IUser {
-    id: number;
+    id: string;
     nickname: string;
     min_donation: number;
     account: string;
@@ -12,7 +12,7 @@ export interface IUser {
 
 function ProfilePage() {
 
-    const [id, setId] = useState<number>(0);
+    const [id, setId] = useState<string>("");
     const [realNickname, setRealNickname] = useState<string>("");
     const [nickname, setNickname] = useState<string>("");
     const [amount, setAmount] = useState<number>(0);
@@ -96,8 +96,8 @@ function ProfilePage() {
                         </Col>
                         <Col>
                             <p>Твоя персональная ссылка для доната: <br/>
-                                <a 
-                                    href={"https://donut-sbp-app.herokuapp.com/donate_to/"+nickname} 
+                                <a
+                                    href={"https://donut-sbp-app.herokuapp.com/donate_to/"+nickname}
                                     className="alert-link"
                                     target="_blank">
                                     https://donut-sbp-app.herokuapp.com/donate_to/{nickname}
